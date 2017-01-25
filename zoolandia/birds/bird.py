@@ -1,6 +1,9 @@
-from animal import Animal
+from animals.animal import Animal
 
 class Bird(Animal):
+    def __init__(self):
+        self.name = "Unknown bird"
+
     def __init__(self, flyDistance, food, name):
         self.flyDistance = flyDistance
         self.food = food
@@ -13,4 +16,3 @@ class Bird(Animal):
         return self.name + " is flying!"
 
 newBird = Bird("3 miles!", "Bugs", "Sparky")
-print newBird.isFlying()
