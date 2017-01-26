@@ -3,8 +3,8 @@ import math
 def modifyInput(count):
     inputCount = "[{0}]>".format(count)
     letterInput = raw_input(inputCount + " Please enter a math expression: ")
-    letterInput = " ".join(letterInput).split(" ")
-    letterInput = filter(None, letterInput)
+    letterInput = letterInput.split(" ")
+    letterInput = " ".join(letterInput)
 
     return letterInput
 
@@ -25,17 +25,9 @@ def execute():
             count += 1
 
 def formulaResult(letterInput):
-    if (len(letterInput) < 3):
-        return "You must enter two letters and a math symbol"
-    elif(letterInput[1] == '+'):
-        return float(letterInput[0]) + float(letterInput[2])
-    elif(letterInput[1] == '-'):
-        return float(letterInput[0]) - float(letterInput[2])
-    elif(letterInput[1] == '/'):
-        return float(letterInput[0]) / float(letterInput[2])
-    elif(letterInput[1] == '*'):
-        return float(letterInput[0]) * float(letterInput[2])
-    else:
-        return "You entered an invalid equation"
+    try:
+        return eval(letterInput)
+    except:
+        return "Invalid equation"
 
 execute()
